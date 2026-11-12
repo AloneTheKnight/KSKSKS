@@ -1,0 +1,65 @@
+# Build directories
+Build/
+build/
+cmake-build-*/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+compile_commands.json
+
+# Build artifacts
+*.obj
+*.o
+*.pdb
+*.ilk
+*.pch
+*.lib
+*.exp
+*.dll
+*.exe
+*.so
+*.dylib
+*.a
+
+# Plugin artifacts
+*.vst3/
+*.component/
+*.app/
+
+# Visual Studio
+.vs/
+.vscode/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.suo
+*.user
+*.sdf
+*.opensdf
+ipch/
+
+# JetBrains
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Local JUCE directory (if placed inside the repository)
+JUCE/
