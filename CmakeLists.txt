@@ -1,0 +1,59 @@
+cmake_minimum_required(VERSION 3.22)
+
+project(KSKSKS VERSION 0.1.0)
+
+if(NOT DEFINED JUCE_DIR)
+    message(FATAL_ERROR "Pass -DJUCE_DIR=G:/libs/JUCE")
+endif()
+
+add_subdirectory("${JUCE_DIR}" JUCE)
+
+juce_add_plugin(KSKSKS
+    COMPANY_NAME "KSKSKS"
+    BUNDLE_ID "dev.ksksks.duck"
+    PLUGIN_MANUFACTURER_CODE KSKS
+    PLUGIN_CODE KSK1
+    PRODUCT_NAME "KSKSKS"
+
+    IS_SYNTH FALSE
+    NEEDS_MIDI_INPUT FALSE
+    NEEDS_MIDI_OUTPUT FALSE
+    IS_MIDI_EFFECT FALSE
+
+    EDITOR_WANTS_KEYBOARD_FOCUS FALSE
+    COPY_PLUGIN_AFTER_BUILD FALSE
+
+    FORMATS VST3
+    VST3_CATEGORIES Fx
+)
+
+juce_generate_juce_header(KSKSKS)
+
+target_sources(KSKSKS PRIVATE
+    Source/PluginProcessor.h
+    Source/PluginProcessor.cpp
+    Source/PluginEditor.h
+    Source/PluginEditor.cpp
+    Source/PluginLookAndFeel.h
+    Source/PluginLookAndFeel.cpp
+    Source/PluginControls.h
+    Source/PluginControls.cpp
+)
+
+target_compile_features(KSKSKS PRIVATE cxx_std_17)
+
+target_compile_definitions(KSKSKS PUBLIC
+    JUCE_WEB_BROWSER=0
+    JUCE_USE_CURL=0
+    JUCE_VST3_CAN_REPLACE_VST2=0
+)
+
+target_link_libraries(KSKSKS
+    PRIVATE
+        juce::juce_audio_utils
+        juce::juce_audio_processors
+        juce::juce_dsp
+    PUBLIC
+        juce::juce_recommended_config_flags
+        juce::juce_recommended_warning_flags
+)
